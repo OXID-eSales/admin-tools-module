@@ -1,0 +1,4 @@
+imports:
+  - { resource: GraphQL/services.yaml }
+  - { resource: Service/services.yaml }
+  - { resource: Shop/services.yaml }

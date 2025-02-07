@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  OxidEsales\AdminTools\CacheClear\GraphQL\Controller:
+    class: OxidEsales\AdminTools\CacheClear\GraphQL\Controller
+    public: true

@@ -1,0 +1,24 @@
+{% extends 'include/header_links.html.twig' %}
+
+{% block admin_header_links %}
+    {{ parent() }}
+
+    <script type="module" src="{{ oViewConf.getModuleUrl('oe_admintools', 'out/src/js/admintools.js') }}"></script>
+
+    <li class="sep">
+        <select id="admincacheclearselect" name="cacheselect">
+            <option value="1">{{ translate({ ident: "CLEARCACHE_ALL" }) }}</option>
+            <option value="2">{{ translate({ ident: "CLEARCACHE_TEMPLATE" }) }}</option>
+            <option value="3">{{ translate({ ident: "CLEARCACHE_INTERNAL" }) }}</option>
+            <option value="4">{{ translate({ ident: "CLEARCACHE_CONTAINER" }) }}</option>
+            <option value="5">{{ translate({ ident: "CLEARCACHE_MODULES" }) }}</option>
+        </select>
+        <input type="button" id="admincacheclearbutton" class="rc" value="{{ translate({ ident: "CLEARCACHE_SUBMIT" }) }}">
+        <input type="hidden" id="controllerUrl" value="{{ oViewConf.getSelfLink()|replace({"&amp;": "&"})|raw }}&cl=admintoolscacheclear&fnc=clearCache&clear=">
+
+        <span style="color: green" id="admintools_cacheclear_status"></span>
+        <span style="color: red; display: none;" id="admintools_cacheclear_status_fail">{{ translate({ ident: "CLEARCACHE_FAILURE" }) }}</span>
+
+    </li>
+
+{% endblock %}

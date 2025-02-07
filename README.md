@@ -1,2 +1,134 @@
-# admin-tools-module
-Admin tools module (cache clear and maybe more to come)
+# admin-tools
+
+Admin tools module for OXID eShop
+- 
+- Module adds a drop down into Admin Backoffice header enabling the admin to select and clear certain or all subshop's caches.
+
+## Usage
+
+This assumes you have OXID eShop (at least `OXID-eSales/oxideshop_ce: v7.3.0` component, which is part of the `7.3.0` compilation) up and running.
+
+## Branch Compatibility
+
+* 1.x versions (or b-7.3.x branch) are compatible with latest shop compilation 7.3.x resp. b-7.3.x  shop compilation branches
+
+### Install and activate
+
+```bash
+# Install desired version of oxid-esales/admin-tools, in this case - latest released 1.x version.
+# 
+$ composer require oxid-esales/admin-tools ^1.0.0 
+```
+
+```bash
+# Activate the module
+# 
+$ ./vendor/bin/oe-console oe:module:activate oe_admintools
+```
+
+### How to use
+
+Activate module either via commandline or in Admin Backoffice. In case of activation via Backoffice, please log out
+and in again to have the module's cache clear dropdown tabs appear in the Backoffice header.
+
+
+## Testing
+
+### Syntax check and static analysis
+
+```bash
+$ composer static
+```
+
+### Unit/Integration/Acceptance tests
+
+- install this module into a running OXID eShop
+- reset shop's database
+```bash
+$ ./vendor/bin/oe-console oe:database:reset --db-host=db-host --db-port=db-port --db-name=db-name --db-user=db-user --db-password=db-password --force
+```
+- run Unit/Integration tests
+```bash
+$ ./vendor/bin/phpunit -c vendor/oxid-esales/admin-tools/tests/phpunit.xml --testsuite Unit
+```
+
+```bash
+$ ./vendor/bin/phpunit -c vendor/oxid-esales/admin-tools/tests/phpunit.xml --bootstrap=source/bootstrap.php --testsuite Integration
+```
+
+```bash
+$  XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --bootstrap=source/bootstrap.php --config=vendor/oxid-esales/admin-tools/tests/phpunit.xml --coverage-html=tests/reports/coverage",
+```
+
+- run Acceptance tests
+```bash
+$ SELENIUM_SERVER_HOST=selenium MODULE_IDS=oe_admintools vendor/bin/codecept run Acceptance --bootstrap=source/bootstrap.php  -c vendor/oxid-esales/admin-tools/tests/codeception.yml
+```
+
+### OXAPI integration
+
+```bash
+# Install and activate compatible version of oxid-esales/graphql-base, in this case - latest released 10.x version.
+# 
+$ composer require oxid-esales/graphql-base ^10.0.0 
+$ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
+```
+
+The OXAPI schema will contain additional queries
+* clearTemplateCache 
+* clearInternalCache 
+* clearContainerCache 
+* clearModuleCaches 
+* clearCaches 
+
+Only a logged in user with sufficient OXAPI permission will be permitted to call these queries.
+'Logged in' means valid OXAPI JWT with sufficient permissions is sent in Authorization Bearer Header.
+User in question must be a member of 'gqladmintoolscache' usergroup.
+
+
+# Development installation on OXID eShop SDK
+
+The installation instructions below are shown for the current [SDK](https://github.com/OXID-eSales/docker-eshop-sdk)
+for shop 7.2. Make sure your system meets the requirements of the SDK.
+
+0. Ensure all docker containers are down to avoid port conflicts
+
+1. Clone the SDK for the new project
+```shell
+echo MyProject && git clone https://github.com/OXID-eSales/docker-eshop-sdk.git $_ && cd $_
+```
+
+2. Clone the repository to the source directory
+```shell
+git clone --recurse-submodules https://github.com/OXID-eSales/admin-tools-module.git --branch=b-7.2.x ./source
+```
+
+3. Run the recipe to setup the development environment
+```shell
+./source/recipes/setup-development.sh
+```
+
+You should be able to access the shop with http://localhost.local and the admin panel with http://localhost.local/admin
+(credentials: noreply@oxid-esales.com / admin)
+
+### Running tests locally
+
+Check the "scripts" section in the `composer.json` file for the available commands. Those commands can be executed
+by connecting to the php container and running the command from there, example:
+
+```shell
+make php
+composer tests-coverage
+```
+
+Commands can be also triggered directly on the container with docker compose, example:
+
+```shell
+docker compose exec -T php composer tests-coverage
+```
+
+
+
+## License
+
+OXID Module and Component License, see [LICENSE file](LICENSE).

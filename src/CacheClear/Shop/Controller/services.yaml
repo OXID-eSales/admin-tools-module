@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  OxidEsales\AdminTools\CacheClear\Shop\Controller\ShopController:
+    tags:
+      - { name: 'oxid.controller', controller_key: 'admintoolscacheclear' }
+    public: true

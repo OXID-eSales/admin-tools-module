@@ -1,0 +1,4 @@
+table_storage:
+  table_name: oxmigrations_admintools
+migrations_paths:
+  'OxidEsales\AdminTools\Migrations': data
