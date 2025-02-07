@@ -25,7 +25,7 @@ install:
           "autoload-dev":{
               "psr-4": {
                 "OxidEsales\\EshopCommunity\\Tests\\": "./vendor/oxid-esales/oxideshop-ce/tests",
-                "OxidEsales\\Graphql\\Base\\Tests\\": "./vendor/oxid-esales/graphql-base/tests"
+                "OxidEsales\\GraphQL\\Base\\Tests\\": "./vendor/oxid-esales/graphql-base/tests"
               }
           },
           "repositories": {

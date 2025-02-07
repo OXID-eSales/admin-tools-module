@@ -53,7 +53,7 @@ docker-compose exec -T -w /var/www php \
 perl -pi -e '
     BEGIN {
         $inserted = 0;
-        $autoload_dev = qq(  "autoload-dev": {\n    "psr-4": {\n      "OxidEsales\\\\EshopCommunity\\\\Tests\\\\": "./vendor/oxid-esales/oxideshop-ce/tests"\n    }\n  },\n);
+        $autoload_dev = qq(  "autoload-dev": {\n    "psr-4": {\n      "OxidEsales\\\\EshopCommunity\\\\Tests\\\\": "./vendor/oxid-esales/oxideshop-ce/tests",\n    "OxidEsales\\\\GraphQL\\\\Base\\\\Tests\\\\": "./vendor/oxid-esales/graphql-base/tests"\n   }\n  },\n);
     }
     if (!$inserted && $_ =~ /"repositories":/) {
         $_ = $autoload_dev . $_;
