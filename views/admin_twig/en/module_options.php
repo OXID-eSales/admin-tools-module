@@ -13,7 +13,7 @@ $aLang = [
     'CLEARCACHE_TEMPLATE' => 'Template cache',
     'CLEARCACHE_INTERNAL' => 'Internal cache',
     'CLEARCACHE_CONTAINER' => 'Container cache',
-    'CLEARCACHE_MODULES' => 'Module cachse',
+    'CLEARCACHE_MODULES' => 'Module caches',
     'CLEARCACHE_SUBMIT' => 'Clear',
 
     'CLEARCACHE_TRIGGERED' => 'Cache clear has been triggered.',
