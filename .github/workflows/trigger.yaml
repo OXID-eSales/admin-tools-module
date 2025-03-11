@@ -3,9 +3,7 @@ name: Auto trigger on push or pull requests
 
 on:
   pull_request: {}
-  push:
-    branches:
-      - 'xx'
+  push: {}
 
 jobs:
   admin_tools_module_php83_mysql_80:
