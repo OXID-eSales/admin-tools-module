@@ -67,9 +67,9 @@ To clear caches via GraphQL API, a user **must be authenticated** and have the r
 ### **Example GraphQL Request**
 Here’s how to **clear all caches** using GraphQL.
 
-#### **GraphQL Mutation**
+#### **GraphQL Query**
 ```graphql
-mutation {
+query {
   clearCaches
 }
 ```
