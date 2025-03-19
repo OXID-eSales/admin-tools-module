@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  OxidEsales\AdminTools\CacheClear\Service\ServiceInterface:
+    class: OxidEsales\AdminTools\CacheClear\Service\Service
