@@ -15,6 +15,22 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 - Provides an admin toolbar dropdown for cache management. 
 - Allows selective or complete cache removal. 
 - Integrates with OXAPI GraphQL for cache clearing via API.
+- Now includes **ShopController as a service** for better modularity.
+
+## Controller as a Service
+
+The module now provides **ShopController as a service**, making it **extendable, testable, and reusable**.
+
+### **Example: ShopController**
+The **ShopController** is now registered as a **service** in `Shop/Controller/services.yaml`:
+
+```yaml
+services:
+  OxidEsales\AdminTools\CacheClear\Shop\Controller\ShopController:
+    tags:
+      - { name: 'oxid.controller', controller_key: 'admintoolscacheclear' }
+    public: true
+```
 
 ## Cache Clearing Options
 
