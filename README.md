@@ -1,6 +1,6 @@
 # OXID eShop Admin-Tools Module
 
-[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.1.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
+[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.3.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
 [![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools-module?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools-module)
 [![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools-module)](https://github.com/oxid-esales/admin-tools-module)
 
@@ -14,22 +14,25 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 - Provides an admin toolbar dropdown for cache management. 
 - Allows selective or complete cache removal. 
-- Integrates with OXAPI GraphQL for cache clearing via API.
-- Now includes **ShopController as a service** for better modularity.
+- Optionally integrates with OXAPI GraphQL for cache clearing via API.
+- Includes **ShopController as a service** for better modularity.
 
-## Controller as a Service
+## Branch Compatibility
 
-The module now provides **ShopController as a service**, making it **extendable, testable, and reusable**.
+* 1.x versions (or b-7.3.x branch) are compatible with latest shop compilation 7.3.x resp. b-7.3.x  shop compilation branches
 
-### **Example: ShopController**
-The **ShopController** is now registered as a **service** in `Shop/Controller/services.yaml`:
+### Install and activate
 
-```yaml
-services:
-  OxidEsales\AdminTools\CacheClear\Shop\Controller\ShopController:
-    tags:
-      - { name: 'oxid.controller', controller_key: 'admintoolscacheclear' }
-    public: true
+```bash
+# Install desired version of oxid-esales/admin-tools, in this case - latest released 1.x version.
+# 
+$ composer require oxid-esales/admin-tools ^1.0.0 
+```
+
+```bash
+# Activate the module
+# 
+$ ./vendor/bin/oe-console oe:module:activate oe_admintools
 ```
 
 ## Cache Clearing Options
@@ -57,9 +60,16 @@ Admin Panel Usage
 - Select the cache type you want to clear. 
 - Click Clear Cache.
 
-## OXAPI GraphQL Integration
+## OXAPI Integration
 
 The module extends **GraphQL API (OXAPI)**, allowing cache clearing via API.
+
+```bash
+# Install and activate compatible version of oxid-esales/graphql-base, in this case - latest released 10.x version.
+# 
+$ composer require oxid-esales/graphql-base ^10.0.0 
+$ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
+```
 
 ### Available GraphQL Queries
 
@@ -72,7 +82,7 @@ The module extends **GraphQL API (OXAPI)**, allowing cache clearing via API.
 | `clearCaches`              | Clears all caches at once. |
 
 
-## OXAPI Authentication Requirements
+### OXAPI Authentication Requirements
 
 To clear caches via GraphQL API, a user **must be authenticated** and have the required permissions.
 
@@ -90,83 +100,25 @@ query {
 }
 ```
 
-## Branch Compatibility
-
-* 1.x versions (or b-7.3.x branch) are compatible with latest shop compilation 7.3.x resp. b-7.3.x  shop compilation branches
-
-### Install and activate
-
-```bash
-# Install desired version of oxid-esales/admin-tools, in this case - latest released 1.x version.
-# 
-$ composer require oxid-esales/admin-tools ^1.0.0 
-```
-
-```bash
-# Activate the module
-# 
-$ ./vendor/bin/oe-console oe:module:activate oe_admintools
-```
-
-### How to use
-
-Activate module either via commandline or in Admin Backoffice. In case of activation via Backoffice, please log out
-and in again to have the module's cache clear dropdown tabs appear in the Backoffice header.
-
-
-## Testing
-
-### Syntax check and static analysis
-
-```bash
-$ composer static
-```
-
-### Unit/Integration/Acceptance tests
-
-- install this module into a running OXID eShop
-- reset shop's database
-```bash
-$ ./vendor/bin/oe-console oe:database:reset --db-host=db-host --db-port=db-port --db-name=db-name --db-user=db-user --db-password=db-password --force
-```
-- run Unit/Integration tests
-```bash
-$ ./vendor/bin/phpunit -c vendor/oxid-esales/admin-tools/tests/phpunit.xml --testsuite Unit
-```
-
-```bash
-$ ./vendor/bin/phpunit -c vendor/oxid-esales/admin-tools/tests/phpunit.xml --bootstrap=source/bootstrap.php --testsuite Integration
-```
-
-```bash
-$  XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --bootstrap=source/bootstrap.php --config=vendor/oxid-esales/admin-tools/tests/phpunit.xml --coverage-html=tests/reports/coverage",
-```
-
-- run Acceptance tests
-```bash
-$ SELENIUM_SERVER_HOST=selenium MODULE_IDS=oe_admintools vendor/bin/codecept run Acceptance --bootstrap=source/bootstrap.php  -c vendor/oxid-esales/admin-tools/tests/codeception.yml
-```
-
-### OXAPI integration
-
-```bash
-# Install and activate compatible version of oxid-esales/graphql-base, in this case - latest released 10.x version.
-# 
-$ composer require oxid-esales/graphql-base ^10.0.0 
-$ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
-```
-
-The OXAPI schema will contain additional queries
-* clearTemplateCache 
-* clearInternalCache 
-* clearContainerCache 
-* clearModuleCaches 
-* clearCaches 
-
 Only a logged in user with sufficient OXAPI permission will be permitted to call these queries.
 'Logged in' means valid OXAPI JWT with sufficient permissions is sent in Authorization Bearer Header.
 User in question must be a member of 'gqladmintoolscache' usergroup.
 
+
+## Controller as a Service
+
+The module provides **ShopController as a service**, making it **extendable, testable, and reusable**.
+
+### **Example: ShopController**
+The **ShopController** is now registered as a **service** in `Shop/Controller/services.yaml`:
+
+```yaml
+services:
+  OxidEsales\AdminTools\CacheClear\Shop\Controller\ShopController:
+    tags:
+      - { name: 'oxid.controller', controller_key: 'admintoolscacheclear' }
+    public: true
+```
 
 # Development installation on OXID eShop SDK
 
@@ -210,8 +162,6 @@ Commands can be also triggered directly on the container with docker compose, ex
 ```shell
 docker compose exec -T php composer tests-coverage
 ```
-
-
 
 ## License
 
