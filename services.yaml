@@ -1,3 +1,4 @@
 imports:
   - { resource: src/CacheClear/services.yaml }
   - { resource: src/Shared/services.yaml }
+  - { resource: src/Shop/Service/services.yaml }

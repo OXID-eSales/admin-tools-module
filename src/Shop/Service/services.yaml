@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  OxidEsales\AdminTools\Shop\Service\LoginServiceInterface:
+    class: OxidEsales\AdminTools\Shop\Service\LoginService
+    public: true

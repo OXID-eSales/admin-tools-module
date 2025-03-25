@@ -21,4 +21,15 @@
 
     </li>
 
+    <li class="sep">
+        <form id="clearcache">
+            {{ oViewConf.getHiddenSid()|raw }}
+            <button type="button" id="clearCacheButton" class="button">
+                CLICK_ME
+            </button>
+            <span id="cacheClearStatus" style="display:none; color: green;">Cache cleared successfully!</span>
+            <span id="cacheClearStatusFail" style="display:none; color: red;">Failed to clear cache.</span>
+        </form>
+    </li>
+
 {% endblock %}

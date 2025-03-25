@@ -13,6 +13,10 @@ export class AdminTools {
         document.querySelector("#admincacheclearbutton").addEventListener(
             'click', () => this.cacheClearCall()
         );
+
+        document.querySelector("#clearCacheButton").addEventListener(
+            'click', () => this.cacheClearTestCall()
+        );
     }
 
    cacheClearCall() {
@@ -39,6 +43,22 @@ export class AdminTools {
         }
         xhttp.send();
    }
+
+    async cacheClearTestCall() {
+        const response = await fetch("http://localhost.local/widget.php?cl=graphql&skipSession=1", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+                query: "query clearCache {clearTemplateCache}",
+                variables: {},
+                operationName: "clearCache"
+            })
+        });
+
+        const data = await response.json();
+        console.log(data);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

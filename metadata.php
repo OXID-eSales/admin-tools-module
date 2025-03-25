@@ -22,7 +22,9 @@ $aModule = [
     'author'      => 'OXID eSales AG',
     'url'         => '',
     'email'       => '',
-    'extend'      => [],
+    'extend'      => [
+        \OxidEsales\Eshop\Application\Model\User::class => \OxidEsales\AdminTools\Shop\Extension\User::class
+    ],
     'controllers' => [],
     'events'      => [],
     'settings'    => [],
