@@ -5,5 +5,5 @@ services:
 
   OxidEsales\AdminTools\CacheClear\Shop\Controller\ShopController:
     tags:
-      - { name: 'oxid.controller', controller_key: 'admintoolscacheclear' }
+      - { name: 'oxid.view_controller', controller_key: 'admintoolscacheclear' }
     public: true
