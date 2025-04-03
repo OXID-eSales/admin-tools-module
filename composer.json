@@ -20,11 +20,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.2",
-        "thecodingmachine/graphqlite": "^6.2",
-        "oxid-esales/apex-theme": "dev-b-7.3.x",
-        "oxid-esales/graphql-base": "dev-b-7.3.x",
-        "oxid-esales/oxideshop-ce": "dev-b-7.3.x"
+        "php": "^8.2"
     },
     "minimum-stability": "dev",
     "require-dev": {
@@ -41,7 +37,11 @@
         "codeception/module-phpbrowser": "*",
         "codeception/module-rest": "*",
         "oxid-esales/codeception-modules": "dev-b-7.3.x",
-        "oxid-esales/codeception-page-objects": "dev-b-7.3.x"
+        "oxid-esales/codeception-page-objects": "dev-b-7.3.x",
+        "thecodingmachine/graphqlite": "^7.0",
+        "oxid-esales/apex-theme": "dev-b-7.3.x",
+        "oxid-esales/graphql-base": "dev-b-7.3.x",
+        "oxid-esales/oxideshop-ce": "dev-b-7.3.x"
     },
     "conflict": {
         "oxid-esales/oxideshop-ce": "<7.3"
