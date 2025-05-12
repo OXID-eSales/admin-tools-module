@@ -67,7 +67,7 @@ The module extends **GraphQL API (OXAPI)**, allowing cache clearing via API.
 ```bash
 # Install and activate compatible version of oxid-esales/graphql-base, in this case - latest released 10.x version.
 # 
-$ composer require oxid-esales/graphql-base ^10.0.0 
+$ composer require oxid-esales/graphql-base ^11.0.0 
 $ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
 ```
 
