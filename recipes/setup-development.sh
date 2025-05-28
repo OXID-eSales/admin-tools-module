@@ -44,23 +44,6 @@ $SCRIPT_PATH/parts/shared/require.sh -n"oxid-esales/developer-tools" -v"dev-b-7.
 $SCRIPT_PATH/parts/shared/require.sh -n"oxid-esales/oxideshop-doctrine-migration-wrapper" -v"dev-b-7.3.x"
 $SCRIPT_PATH/parts/shared/require_demodata_package.sh -e"${edition}" -b"b-7.3.x"
 
-docker compose exec -T php composer require oxid-esales/apex-theme dev-b-7.3.x
-docker compose exec -T php composer require oxid-esales/graphql-base dev-b-7.3.x
-
-docker-compose exec -T -w /var/www php \
-       composer config allow-plugins.oxid-esales/oxideshop-composer-plugin true
-
-perl -pi -e '
-    BEGIN {
-        $inserted = 0;
-        $autoload_dev = qq(  "autoload-dev": {\n    "psr-4": {\n      "OxidEsales\\\\EshopCommunity\\\\Tests\\\\": "./vendor/oxid-esales/oxideshop-ce/tests",\n    "OxidEsales\\\\GraphQL\\\\Base\\\\Tests\\\\": "./vendor/oxid-esales/graphql-base/tests"\n   }\n  },\n);
-    }
-    if (!$inserted && $_ =~ /"repositories":/) {
-        $_ = $autoload_dev . $_;
-        $inserted = 1;
-    }
-' source/composer.json
-
 docker compose exec -T php composer update --no-interaction
 
 make up

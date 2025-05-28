@@ -22,7 +22,6 @@
     "require": {
         "php": "^8.2"
     },
-    "minimum-stability": "dev",
     "require-dev": {
         "phpstan/phpstan": "^1.9.14",
         "squizlabs/php_codesniffer": "3.*",
@@ -48,8 +47,14 @@
     },
     "autoload": {
         "psr-4": {
-            "OxidEsales\\AdminTools\\": "src/",
-            "OxidEsales\\AdminTools\\Tests\\": "tests/"
+            "OxidEsales\\AdminTools\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OxidEsales\\AdminTools\\Tests\\": "./tests",
+            "OxidEsales\\EshopCommunity\\Tests\\": "./vendor/oxid-esales/oxideshop-ce/tests",
+            "OxidEsales\\GraphQL\\Base\\Tests\\": "./vendor/oxid-esales/graphql-base/tests"
         }
     },
     "scripts": {
@@ -96,16 +101,6 @@
         "allow-plugins": {
             "oxid-esales/oxideshop-composer-plugin": true,
             "oxid-esales/oxideshop-unified-namespace-generator": true
-        }
-    },
-    "repositories": {
-        "oxid-esales/oxideshop-pe": {
-            "type": "git",
-            "url": "https://github.com/OXID-eSales/oxideshop_pe.git"
-        },
-        "oxid-esales/oxideshop-ce": {
-            "type": "git",
-            "url": "https://github.com/OXID-eSales/oxideshop_ce.git"
         }
     }
 }
