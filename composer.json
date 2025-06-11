@@ -40,7 +40,7 @@
         "oxid-esales/codeception-page-objects": "dev-b-7.3.x",
         "thecodingmachine/graphqlite": "^7.0",
         "oxid-esales/apex-theme": "dev-b-7.3.x",
-        "oxid-esales/graphql-base": "dev-b-7.3.x",
+        "oxid-esales/graphql-base": "v11.0.0",
         "oxid-esales/oxideshop-ce": "dev-b-7.3.x"
     },
     "conflict": {
