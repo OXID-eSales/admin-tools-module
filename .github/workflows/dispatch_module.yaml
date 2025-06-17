@@ -23,18 +23,10 @@ on:
           - 'PHP8.4/MariaDb11'
         default: 'PHP8.3/MySQL8.0'
         description: 'Limit to one PHP/MySQL combination'
-      runs_on:
-        type: choice
-        options:
-          - '["ubuntu-latest"]'
-          - '["self-hosted", "x64"]'
-        description: 'JSON string/array describing the runner'
-        required: true
-        default: '["self-hosted", "x64"]'
 
 jobs:
   build_testplan:
-    runs-on: ${{ fromJson(inputs.runs_on) }}
+    runs-on: ubuntu-latest
     outputs:
       testplan: '${{ steps.build.outputs.testplan }}'
     steps:
@@ -66,7 +58,7 @@ jobs:
     uses: oxid-eSales/github-actions/.github/workflows/universal_workflow_light.yaml@v4
     with:
       testplan: ${{ needs.build_testplan.outputs.testplan }}
-      runs_on: ${{ inputs.runs_on }}
+      runs_on: ubuntu-latest
       defaults: 'v4'
       plan_folder: '.github/oxid-esales'
     secrets:
