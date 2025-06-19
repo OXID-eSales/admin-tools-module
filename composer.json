@@ -97,15 +97,5 @@
             "oxid-esales/oxideshop-composer-plugin": true,
             "oxid-esales/oxideshop-unified-namespace-generator": true
         }
-    },
-    "repositories": {
-        "oxid-esales/oxideshop-pe": {
-            "type": "git",
-            "url": "https://github.com/OXID-eSales/oxideshop_pe.git"
-        },
-        "oxid-esales/oxideshop-ce": {
-            "type": "git",
-            "url": "https://github.com/OXID-eSales/oxideshop_ce.git"
-        }
     }
 }
