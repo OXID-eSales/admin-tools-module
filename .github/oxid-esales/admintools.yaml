@@ -1,21 +1,16 @@
 install:
   cache:
     prepared_shop: false
-  git:
-    repository: 'OXID-eSales/admin-tools-module'
-    ref: &ref '{{ .Github.RefName }}'
-    shop_url: 'https://github.com/OXID-eSales/admin-tools-module.git'
-    shop_ref: *ref
   composer:
     root_url: ''
     transform: |
       {
           "require": {
-              "oxid-esales/oxideshop-ce": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/twig-component": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/twig-admin-theme": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/apex-theme": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/developer-tools": "{{ .Data.global.composer.dev_ref }}"
+              "oxid-esales/oxideshop-ce": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/twig-component": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/twig-admin-theme": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/apex-theme": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/developer-tools": "{{ .Data.install.composer.dev_ref }}"
           },
           "autoload-dev":{
               "psr-4": {
@@ -32,10 +27,6 @@ install:
     
     vendor/bin/oe-console oe:module:activate oe_admintools
     vendor/bin/oe-console oe:theme:activate apex
-
-install_shop_with_modules:
-  composer:
-    root_url: ''
 
 runscript: &runscript
   matrix:
@@ -65,12 +56,12 @@ sonarcloud:
   strip_path: '/var/www/'
   project_key: 'OXID-eSales_admin-tools-module'
   project_name: 'oxid-esales/admin-tools-module'
-  parameters: |
-    -Dsonar.language=php \
-    -Dsonar.scm.provider=git \
-    -Dsonar.sources=src \
-    -Dsonar.tests=tests \
-    -Donar.php.phpstan.reportPaths=coverage-reports/phpstan.report.json
+  parameters: >
+    -Dsonar.language=php
+    -Dsonar.scm.provider=git
+    -Dsonar.sources=src
+    -Dsonar.tests=tests
+    -Dsonar.php.phpstan.reportPaths=coverage-reports/phpstan.report.json
 
 finish:
-  slack_title: 'Admin tools module ({{ .Data.global.git.shop_ref }}) by {{ .Github.Actor }}'
+  slack_title: 'Module Admin tools ({{ .Data.install.git.shop_ref }}) by {{ .Github.Actor }}'
