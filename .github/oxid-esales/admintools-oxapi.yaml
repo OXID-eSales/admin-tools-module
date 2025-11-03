@@ -6,12 +6,12 @@ install:
     transform: |
       {
           "require": {
-              "oxid-esales/oxideshop-ce": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/twig-component": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/twig-admin-theme": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/apex-theme": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/developer-tools": "{{ .Data.global.composer.dev_ref }}",
-              "oxid-esales/graphql-base": "{{ .Data.global.composer.dev_ref }}"
+              "oxid-esales/oxideshop-ce": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/twig-component": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/twig-admin-theme": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/apex-theme": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/developer-tools": "{{ .Data.install.composer.dev_ref }}",
+              "oxid-esales/graphql-base": "{{ .Data.install.composer.dev_ref }}"
           },
           "autoload-dev":{
               "psr-4": {
@@ -69,4 +69,4 @@ sonarcloud:
     -Dsonar.php.phpstan.reportPaths=coverage-reports/phpstan.report.json
 
 finish:
-  slack_title: 'Admin tools module ({{ .Data.global.git.shop_ref }}) by {{ .Github.Actor }}'
+  slack_title: 'Module Admin tools with oxapi ({{ .Data.install.git.shop_ref }}) by {{ .Github.Actor }}'
