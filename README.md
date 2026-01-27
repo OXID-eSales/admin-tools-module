@@ -1,6 +1,6 @@
 # OXID eShop Admin-Tools Module
 
-[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.4.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
+[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.5.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
 [![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools-module?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools-module)
 [![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools-module)](https://github.com/oxid-esales/admin-tools-module)
 
@@ -19,14 +19,15 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 ## Branch Compatibility
 
+* b-7.5.x branch is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
 * v1.1.0 (or b-7.4.x branch) is compatible with latest shop compilation 7.4.x resp. b-7.4.x shop compilation branches
 * v1.0.0 (or b-7.3.x branch) is compatible with latest shop compilation 7.3.x resp. b-7.3.x shop compilation branches
 
 ### Install and activate
 
 ```bash
-# Install desired version of oxid-esales/admin-tools, in this case - latest released 1.x version for OXID 7.4.
-$ composer require oxid-esales/admin-tools ^1.1.0
+# Install desired version of oxid-esales/admin-tools for OXID 7.5.
+$ composer require oxid-esales/admin-tools:dev-b-7.5.x
 ```
 
 You should run migrations both after installing the module and after each module update:
@@ -58,7 +59,7 @@ The available options can be accessed via **Admin UI** or **OXAPI GraphQL**.
 
 ## Usage
 
-This assumes you have OXID eShop (at least `OXID-eSales/oxideshop_ce: v7.4.0` component, which is part of the `7.4.0` compilation) up and running.
+This assumes you have OXID eShop (at least `OXID-eSales/oxideshop_ce: v7.5.0` component, which is part of the `7.5.0` compilation) up and running.
 
 Admin Panel Usage
 - Go to the Admin Backoffice. 
@@ -71,9 +72,9 @@ Admin Panel Usage
 The module extends **GraphQL API (OXAPI)**, allowing cache clearing via API.
 
 ```bash
-# Install and activate compatible version of oxid-esales/graphql-base, in this case - latest released 12.x version for OXID 7.4.
+# Install and activate compatible version of oxid-esales/graphql-base for OXID 7.5.
 #
-$ composer require oxid-esales/graphql-base ^12.0.0
+$ composer require oxid-esales/graphql-base:dev-b-7.5.x
 $ ./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_graphql_base
 $ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
 ```
@@ -130,7 +131,7 @@ services:
 # Development installation on OXID eShop SDK
 
 The installation instructions below are shown for the current [SDK](https://github.com/OXID-eSales/docker-eshop-sdk)
-for shop 7.4. Make sure your system meets the requirements of the SDK.
+for shop 7.5. Make sure your system meets the requirements of the SDK.
 
 0. Ensure all docker containers are down to avoid port conflicts
 
@@ -141,7 +142,7 @@ echo MyProject && git clone https://github.com/OXID-eSales/docker-eshop-sdk.git 
 
 2. Clone the repository to the source directory
 ```shell
-git clone --recurse-submodules https://github.com/OXID-eSales/admin-tools-module.git --branch=b-7.4.x ./source
+git clone --recurse-submodules https://github.com/OXID-eSales/admin-tools-module.git --branch=b-7.5.x ./source
 ```
 
 3. Run the recipe to setup the development environment
