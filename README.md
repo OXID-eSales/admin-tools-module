@@ -19,7 +19,7 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 ## Branch Compatibility
 
-* b-7.5.x branch is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
+* v1.2.0 (or b-7.5.x branch) is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
 * v1.1.0 (or b-7.4.x branch) is compatible with latest shop compilation 7.4.x resp. b-7.4.x shop compilation branches
 * v1.0.0 (or b-7.3.x branch) is compatible with latest shop compilation 7.3.x resp. b-7.3.x shop compilation branches
 
