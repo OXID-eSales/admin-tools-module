@@ -11,7 +11,7 @@ namespace OxidEsales\AdminTools\CacheClear\GraphQL;
 
 use OxidEsales\AdminTools\CacheClear\Service\ServiceInterface;
 use TheCodingMachine\GraphQLite\Annotations\Logged;
-use TheCodingMachine\GraphQLite\Annotations\Query;
+use TheCodingMachine\GraphQLite\Annotations\Mutation;
 use TheCodingMachine\GraphQLite\Annotations\Right;
 
 final class Controller
@@ -21,7 +21,7 @@ final class Controller
     ) {
     }
 
-    #[Query]
+    #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
     public function clearTemplateCache(): void
@@ -29,7 +29,7 @@ final class Controller
         $this->cacheClearService->clearCurrentShopTemplateCache();
     }
 
-    #[Query]
+    #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
     public function clearInternalCache(): void
@@ -37,7 +37,7 @@ final class Controller
         $this->cacheClearService->clearCurrentShopInternalCache();
     }
 
-    #[Query]
+    #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
     public function clearContainerCache(): void
@@ -45,7 +45,7 @@ final class Controller
         $this->cacheClearService->clearCurrentShopContainerCache();
     }
 
-    #[Query]
+    #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
     public function clearModuleCaches(): void
@@ -53,7 +53,7 @@ final class Controller
         $this->cacheClearService->clearCurrentShopModuleCaches();
     }
 
-    #[Query]
+    #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
     public function clearCaches(): void

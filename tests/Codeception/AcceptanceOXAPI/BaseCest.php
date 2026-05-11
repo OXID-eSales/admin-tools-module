@@ -84,31 +84,31 @@ abstract class BaseCest
     protected function cacheClearQueryDataProvider(): \Generator
     {
         yield [
-            'type' => 'query',
+            'type' => 'mutation',
             'queryName' => 'clearTemplateCache',
             'parameters' => [],
             'field' => ''
         ];
         yield [
-            'type' => 'query',
+            'type' => 'mutation',
             'queryName' => 'clearInternalCache',
             'parameters' => [],
             'field' => ''
         ];
         yield [
-            'type' => 'query',
+            'type' => 'mutation',
             'queryName' => 'clearContainerCache',
             'parameters' => [],
             'field' => ''
         ];
         yield [
-            'type' => 'query',
+            'type' => 'mutation',
             'queryName' => 'clearModuleCaches',
             'parameters' => [],
             'field' => ''
         ];
         yield [
-            'type' => 'query',
+            'type' => 'mutation',
             'queryName' => 'clearCaches',
             'parameters' => [],
             'field' => ''

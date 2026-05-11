@@ -19,7 +19,7 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 ## Branch Compatibility
 
-* v1.2.0 (or b-7.5.x branch) is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
+* v2.0.0 (or b-7.5.x branch) is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
 * v1.1.0 (or b-7.4.x branch) is compatible with latest shop compilation 7.4.x resp. b-7.4.x shop compilation branches
 * v1.0.0 (or b-7.3.x branch) is compatible with latest shop compilation 7.3.x resp. b-7.3.x shop compilation branches
 
@@ -79,9 +79,9 @@ $ ./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_graphql_base
 $ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
 ```
 
-### Available GraphQL Queries
+### Available GraphQL Mutations
 
-| **Query Name**             | **Functionality** |
+| **Mutation Name**          | **Functionality** |
 |----------------------------|------------------|
 | `clearTemplateCache`       | Clears template-related cache. |
 | `clearInternalCache`       | Clears internal system cache. |
@@ -101,9 +101,9 @@ To clear caches via GraphQL API, a user **must be authenticated** and have the r
 ### **Example GraphQL Request**
 Here’s how to **clear all caches** using GraphQL.
 
-#### **GraphQL Query**
+#### **GraphQL Mutation**
 ```graphql
-query {
+mutation {
   clearCaches
 }
 ```
