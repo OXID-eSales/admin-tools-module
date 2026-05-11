@@ -23,5 +23,7 @@ interface ServiceInterface
 
     public function clearCurrentShopModuleCaches(): void;
 
+    public function clearCurrentShopTemplateChainCache(): void;
+
     public function clearAllCurrentShopCaches(): void;
 }

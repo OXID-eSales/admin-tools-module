@@ -12,6 +12,7 @@
             <option value="3">{{ translate({ ident: "CLEARCACHE_INTERNAL" }) }}</option>
             <option value="4">{{ translate({ ident: "CLEARCACHE_CONTAINER" }) }}</option>
             <option value="5">{{ translate({ ident: "CLEARCACHE_MODULES" }) }}</option>
+            <option value="6">{{ translate({ ident: "CLEARCACHE_TEMPLATE_CHAIN" }) }}</option>
         </select>
         <input type="button" id="admincacheclearbutton" class="rc" value="{{ translate({ ident: "CLEARCACHE_SUBMIT" }) }}">
         <input type="hidden" id="controllerUrl" value="{{ oViewConf.getSelfLink()|replace({"&amp;": "&"})|raw }}&cl=admintoolscacheclear&fnc=clearCache&clear=">

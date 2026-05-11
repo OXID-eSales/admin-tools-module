@@ -11,6 +11,7 @@ namespace OxidEsales\AdminTools\CacheClear\Service;
 
 use OxidEsales\EshopCommunity\Internal\Framework\DIContainer\Service\ContainerCacheInterface;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Cache\ModuleCacheServiceInterface;
+use OxidEsales\Twig\Resolver\TemplateChain\Cache\TemplateChainCacheInterface;
 use OxidEsales\EshopCommunity\Internal\Framework\Templating\Cache\ShopTemplateCacheServiceInterface;
 use OxidEsales\EshopCommunity\Internal\Transition\Adapter\ShopAdapterInterface;
 use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
@@ -24,7 +25,8 @@ class Service implements ServiceInterface
         private ShopAdapterInterface $shopAdapter,
         private ContainerCacheInterface $containerCache,
         private ModuleCacheServiceInterface $moduleCacheService,
-        private ModulesDataProviderInterface $modulesDataProvider
+        private ModulesDataProviderInterface $modulesDataProvider,
+        private TemplateChainCacheInterface $templateChainCache
     ) {
     }
 
@@ -51,11 +53,17 @@ class Service implements ServiceInterface
         }
     }
 
+    public function clearCurrentShopTemplateChainCache(): void
+    {
+        $this->templateChainCache->invalidate($this->context->getCurrentShopId());
+    }
+
     public function clearAllCurrentShopCaches(): void
     {
         $this->clearCurrentShopInternalCache();
         $this->clearCurrentShopModuleCaches();
         $this->clearCurrentShopTemplateCache();
+        $this->clearCurrentShopTemplateChainCache();
         $this->clearCurrentShopContainerCache();
     }
 }

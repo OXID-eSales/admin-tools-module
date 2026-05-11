@@ -55,6 +55,7 @@ The available options can be accessed via **Admin UI** or **OXAPI GraphQL**.
 | **Internal Cache**       | Clears OXID eShop’s **internal caching mechanism**. |
 | **Container Cache**      | Clears the **dependency injection container cache** (Symfony-based). |
 | **Module Caches**        | Clears caches related to **installed modules**. |
+| **Template Chain Cache** | Clears the **Twig template chain resolution cache**. |
 | **All Caches**           | Performs a **complete cache reset** (combining all above caches). |
 
 ## Usage
@@ -87,6 +88,7 @@ $ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
 | `clearInternalCache`       | Clears internal system cache. |
 | `clearContainerCache`      | Clears DI container cache. |
 | `clearModuleCaches`        | Clears module-related cache. |
+| `clearTemplateChainCache`  | Clears Twig template chain cache. |
 | `clearCaches`              | Clears all caches at once. |
 
 

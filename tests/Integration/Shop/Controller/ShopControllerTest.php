@@ -70,6 +70,10 @@ class ShopControllerTest extends IntegrationTestCase
             'post' => 5,
             'method' => 'clearCurrentShopModuleCaches'
         ];
+        yield [
+            'post' => 6,
+            'method' => 'clearCurrentShopTemplateChainCache'
+        ];
     }
 
     #[DataProvider('cacheClearInvalidDataProvider')]

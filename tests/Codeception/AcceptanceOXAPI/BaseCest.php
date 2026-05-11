@@ -109,6 +109,12 @@ abstract class BaseCest
         ];
         yield [
             'type' => 'mutation',
+            'queryName' => 'clearTemplateChainCache',
+            'parameters' => [],
+            'field' => ''
+        ];
+        yield [
+            'type' => 'mutation',
             'queryName' => 'clearCaches',
             'parameters' => [],
             'field' => ''

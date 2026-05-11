@@ -14,6 +14,7 @@ $aLang = [
     'CLEARCACHE_INTERNAL' => 'Internen Cache',
     'CLEARCACHE_CONTAINER' => 'Container Cache',
     'CLEARCACHE_MODULES' => 'Module Caches',
+    'CLEARCACHE_TEMPLATE_CHAIN' => 'Template-Chain-Cache',
     'CLEARCACHE_SUBMIT' => 'leeren',
 
     'CLEARCACHE_TRIGGERED' => 'Cache Leerung angefordert.',

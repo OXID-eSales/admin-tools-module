@@ -16,6 +16,7 @@ use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModulesDataProvid
 use OxidEsales\EshopCommunity\Internal\Framework\Templating\Cache\ShopTemplateCacheServiceInterface;
 use OxidEsales\EshopCommunity\Internal\Transition\Adapter\ShopAdapterInterface;
 use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
+use OxidEsales\Twig\Resolver\TemplateChain\Cache\TemplateChainCacheInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -95,19 +96,27 @@ class ServiceTest extends TestCase
 
     public function testClearCurrentShopModuleCaches(): void
     {
+        $shopId = random_int(1, 9999);
+        $moduleIds = ['mod1', 'mod2', 'mod3'];
+
         $context = $this->createConfiguredStub(
             ContextInterface::class,
-            ['getCurrentShopId' => 7]
+            ['getCurrentShopId' => $shopId]
         );
 
         $modulesDataProvider = $this->createConfiguredStub(
             ModulesDataProviderInterface::class,
-            ['getModuleIds' => ['mod1', 'mod2', 'mod3']]
+            ['getModuleIds' => $moduleIds]
         );
 
+        $captured = [];
         $moduleCacheService = $this->getMockBuilder(ModuleCacheServiceInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
+        $moduleCacheService->method('invalidate')
+            ->willReturnCallback(function (string $moduleId, int $actualShopId) use (&$captured) {
+                $captured[] = [$moduleId, $actualShopId];
+            });
 
         $sut = $this->getSut(
             context: $context,
@@ -119,6 +128,33 @@ class ServiceTest extends TestCase
         );
 
         $sut->clearCurrentShopModuleCaches();
+
+        $expected = array_map(fn(string $id) => [$id, $shopId], $moduleIds);
+        $this->assertSame($expected, $captured);
+    }
+
+    public function testClearCurrentShopTemplateChainCache(): void
+    {
+        $shopId = random_int(1, 9999);
+        $context = $this->createConfiguredStub(
+            ContextInterface::class,
+            ['getCurrentShopId' => $shopId]
+        );
+
+        $templateChainCache = $this->getMockBuilder(TemplateChainCacheInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $templateChainCache
+            ->expects($this->once())
+            ->method('invalidate')
+            ->with($shopId);
+
+        $sut = $this->getSut(
+            context: $context,
+            templateChainCache: $templateChainCache
+        );
+
+        $sut->clearCurrentShopTemplateChainCache();
     }
 
     public function testClearAllCurrentShopCaches(): void
@@ -130,6 +166,7 @@ class ServiceTest extends TestCase
                     'clearCurrentShopInternalCache',
                     'clearCurrentShopModuleCaches',
                     'clearCurrentShopTemplateCache',
+                    'clearCurrentShopTemplateChainCache',
                     'clearCurrentShopContainerCache'
                 ]
             )
@@ -140,6 +177,8 @@ class ServiceTest extends TestCase
             ->method('clearCurrentShopModuleCaches');
         $sut->expects($this->once())
             ->method('clearCurrentShopTemplateCache');
+        $sut->expects($this->once())
+            ->method('clearCurrentShopTemplateChainCache');
         $sut->expects($this->once())
             ->method('clearCurrentShopContainerCache');
 
@@ -152,7 +191,8 @@ class ServiceTest extends TestCase
         ?ShopAdapterInterface $shopAdapter = null,
         ?ContainerCacheInterface $containerCache = null,
         ?ModuleCacheServiceInterface $moduleCacheService = null,
-        ?ModulesDataProviderInterface $modulesDataProvider = null
+        ?ModulesDataProviderInterface $modulesDataProvider = null,
+        ?TemplateChainCacheInterface $templateChainCache = null
     ): Service {
         return new Service(
             context: $context ?? $this->createStub(ContextInterface::class),
@@ -161,7 +201,8 @@ class ServiceTest extends TestCase
             shopAdapter: $shopAdapter ?? $this->createStub(ShopAdapterInterface::class),
             containerCache: $containerCache ?? $this->createStub(ContainerCacheInterface::class),
             moduleCacheService: $moduleCacheService ?? $this->createStub(ModuleCacheServiceInterface::class),
-            modulesDataProvider: $modulesDataProvider ?? $this->createStub(ModulesDataProviderInterface::class)
+            modulesDataProvider: $modulesDataProvider ?? $this->createStub(ModulesDataProviderInterface::class),
+            templateChainCache: $templateChainCache ?? $this->createStub(TemplateChainCacheInterface::class)
         );
     }
 }

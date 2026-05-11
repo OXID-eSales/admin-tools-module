@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - Unreleased
 
+### Added
+- Template chain cache clearing support (admin dropdown option and `clearTemplateChainCache` GraphQL mutation)
+
 ### Changed
 - Updated to work with OXID eShop 7.5.x
 - Minimum PHP version is now 8.3, tested up to PHP 8.5
 - GraphQL cache clear operations changed from queries to mutations
+- `ServiceInterface` extended with `clearCurrentShopTemplateChainCache()`
 
 
 ## [1.1.0] - 2025-11-06

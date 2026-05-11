@@ -45,6 +45,7 @@ class ShopController extends AdminController
             3 => $this->service->clearCurrentShopInternalCache(),
             4 => $this->service->clearCurrentShopContainerCache(),
             5 => $this->service->clearCurrentShopModuleCaches(),
+            6 => $this->service->clearCurrentShopTemplateChainCache(),
             default => $this->logger->warning('Unmatched cache clear request input.')
         };
     }

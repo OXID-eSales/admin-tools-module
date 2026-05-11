@@ -63,6 +63,12 @@ class ControllerTest extends TestCase
         ];
         yield [
             'expected' => [
+                'clearCurrentShopTemplateChainCache'
+            ],
+            'method' => 'clearTemplateChainCache'
+        ];
+        yield [
+            'expected' => [
                 'clearAllCurrentShopCaches'
             ],
             'method' => 'clearCaches'

@@ -56,6 +56,14 @@ final class Controller
     #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
+    public function clearTemplateChainCache(): void
+    {
+        $this->cacheClearService->clearCurrentShopTemplateChainCache();
+    }
+
+    #[Mutation]
+    #[Logged]
+    #[Right('CLEAR_CACHE')]
     public function clearCaches(): void
     {
         $this->cacheClearService->clearAllCurrentShopCaches();
