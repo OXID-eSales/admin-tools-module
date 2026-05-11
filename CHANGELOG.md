@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Template chain cache clearing support (admin dropdown option and `clearTemplateChainCache` GraphQL mutation)
 - GraphQL schema cache clearing support via `clearGraphQLSchemaCache` GraphQL mutation (only reachable when `oe_graphql_base` is active)
+- Event subscriber `InvalidateGraphQLSchemaCacheEventSubscriber` that clears the GraphQL schema cache on `ClearShopCacheEvent` 
 
 ### Changed
 - Updated to work with OXID eShop 7.5.x

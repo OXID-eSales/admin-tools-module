@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  OxidEsales\AdminTools\CacheClear\Event\InvalidateGraphQLSchemaCacheEventSubscriber:
+    arguments:
+      $graphqlCache: '@?oxidesales.graphqlbase.cache'
+    tags:
+      - { name: kernel.event_subscriber }
