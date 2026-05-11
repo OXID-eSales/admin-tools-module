@@ -5,3 +5,5 @@ services:
 
   OxidEsales\AdminTools\CacheClear\Service\ServiceInterface:
     class: OxidEsales\AdminTools\CacheClear\Service\Service
+    arguments:
+      $graphqlCache: '@?oxidesales.graphqlbase.cache'

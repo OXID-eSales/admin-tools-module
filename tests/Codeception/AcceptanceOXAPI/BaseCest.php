@@ -115,6 +115,12 @@ abstract class BaseCest
         ];
         yield [
             'type' => 'mutation',
+            'queryName' => 'clearGraphQLSchemaCache',
+            'parameters' => [],
+            'field' => ''
+        ];
+        yield [
+            'type' => 'mutation',
             'queryName' => 'clearCaches',
             'parameters' => [],
             'field' => ''

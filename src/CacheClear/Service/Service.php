@@ -16,6 +16,7 @@ use OxidEsales\EshopCommunity\Internal\Framework\Templating\Cache\ShopTemplateCa
 use OxidEsales\EshopCommunity\Internal\Transition\Adapter\ShopAdapterInterface;
 use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModulesDataProviderInterface;
+use Psr\SimpleCache\CacheInterface;
 
 class Service implements ServiceInterface
 {
@@ -26,7 +27,8 @@ class Service implements ServiceInterface
         private ContainerCacheInterface $containerCache,
         private ModuleCacheServiceInterface $moduleCacheService,
         private ModulesDataProviderInterface $modulesDataProvider,
-        private TemplateChainCacheInterface $templateChainCache
+        private TemplateChainCacheInterface $templateChainCache,
+        private ?CacheInterface $graphqlCache = null
     ) {
     }
 
@@ -58,12 +60,18 @@ class Service implements ServiceInterface
         $this->templateChainCache->invalidate($this->context->getCurrentShopId());
     }
 
+    public function clearCurrentShopGraphQLSchemaCache(): void
+    {
+        $this->graphqlCache?->clear();
+    }
+
     public function clearAllCurrentShopCaches(): void
     {
         $this->clearCurrentShopInternalCache();
         $this->clearCurrentShopModuleCaches();
         $this->clearCurrentShopTemplateCache();
         $this->clearCurrentShopTemplateChainCache();
+        $this->clearCurrentShopGraphQLSchemaCache();
         $this->clearCurrentShopContainerCache();
     }
 }

@@ -25,5 +25,7 @@ interface ServiceInterface
 
     public function clearCurrentShopTemplateChainCache(): void;
 
+    public function clearCurrentShopGraphQLSchemaCache(): void;
+
     public function clearAllCurrentShopCaches(): void;
 }

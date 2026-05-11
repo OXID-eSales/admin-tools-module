@@ -64,6 +64,14 @@ final class Controller
     #[Mutation]
     #[Logged]
     #[Right('CLEAR_CACHE')]
+    public function clearGraphQLSchemaCache(): void
+    {
+        $this->cacheClearService->clearCurrentShopGraphQLSchemaCache();
+    }
+
+    #[Mutation]
+    #[Logged]
+    #[Right('CLEAR_CACHE')]
     public function clearCaches(): void
     {
         $this->cacheClearService->clearAllCurrentShopCaches();

@@ -89,6 +89,7 @@ $ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
 | `clearContainerCache`      | Clears DI container cache. |
 | `clearModuleCaches`        | Clears module-related cache. |
 | `clearTemplateChainCache`  | Clears Twig template chain cache. |
+| `clearGraphQLSchemaCache`  | Clears GraphQL schema cache (only reachable when `oe_graphql_base` is active). |
 | `clearCaches`              | Clears all caches at once. |
 
 

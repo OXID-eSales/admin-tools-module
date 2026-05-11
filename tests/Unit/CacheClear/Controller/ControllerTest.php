@@ -69,6 +69,12 @@ class ControllerTest extends TestCase
         ];
         yield [
             'expected' => [
+                'clearCurrentShopGraphQLSchemaCache'
+            ],
+            'method' => 'clearGraphQLSchemaCache'
+        ];
+        yield [
+            'expected' => [
                 'clearAllCurrentShopCaches'
             ],
             'method' => 'clearCaches'

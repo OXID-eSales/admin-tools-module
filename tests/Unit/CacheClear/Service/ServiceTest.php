@@ -19,6 +19,7 @@ use OxidEsales\EshopCommunity\Internal\Transition\Utility\ContextInterface;
 use OxidEsales\Twig\Resolver\TemplateChain\Cache\TemplateChainCacheInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\SimpleCache\CacheInterface;
 
 #[CoversClass(Service::class)]
 class ServiceTest extends TestCase
@@ -157,16 +158,61 @@ class ServiceTest extends TestCase
         $sut->clearCurrentShopTemplateChainCache();
     }
 
+    public function testClearCurrentShopGraphQLSchemaCache(): void
+    {
+        $graphqlCache = $this->getMockBuilder(CacheInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $graphqlCache
+            ->expects($this->once())
+            ->method('clear');
+
+        $sut = $this->getSut(graphqlCache: $graphqlCache);
+
+        $sut->clearCurrentShopGraphQLSchemaCache();
+    }
+
+    public function testClearAllCurrentShopCachesSkipsGraphqlWhenInactive(): void
+    {
+        $graphqlCache = $this->getMockBuilder(CacheInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $graphqlCache->expects($this->never())->method('clear');
+
+        $sut = new Service(
+            context: $this->createStub(ContextInterface::class),
+            shopTemplateCache: $this->createStub(ShopTemplateCacheServiceInterface::class),
+            shopAdapter: $this->createStub(ShopAdapterInterface::class),
+            containerCache: $this->createStub(ContainerCacheInterface::class),
+            moduleCacheService: $this->createStub(ModuleCacheServiceInterface::class),
+            modulesDataProvider: $this->createStub(ModulesDataProviderInterface::class),
+            templateChainCache: $this->createStub(TemplateChainCacheInterface::class),
+            graphqlCache: null
+        );
+
+        $sut->clearAllCurrentShopCaches();
+    }
+
     public function testClearAllCurrentShopCaches(): void
     {
         $sut = $this->getMockBuilder(Service::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([
+                'context' => $this->createStub(ContextInterface::class),
+                'shopTemplateCache' => $this->createStub(ShopTemplateCacheServiceInterface::class),
+                'shopAdapter' => $this->createStub(ShopAdapterInterface::class),
+                'containerCache' => $this->createStub(ContainerCacheInterface::class),
+                'moduleCacheService' => $this->createStub(ModuleCacheServiceInterface::class),
+                'modulesDataProvider' => $this->createStub(ModulesDataProviderInterface::class),
+                'templateChainCache' => $this->createStub(TemplateChainCacheInterface::class),
+                'graphqlCache' => $this->createStub(CacheInterface::class),
+            ])
             ->onlyMethods(
                 [
                     'clearCurrentShopInternalCache',
                     'clearCurrentShopModuleCaches',
                     'clearCurrentShopTemplateCache',
                     'clearCurrentShopTemplateChainCache',
+                    'clearCurrentShopGraphQLSchemaCache',
                     'clearCurrentShopContainerCache'
                 ]
             )
@@ -180,6 +226,8 @@ class ServiceTest extends TestCase
         $sut->expects($this->once())
             ->method('clearCurrentShopTemplateChainCache');
         $sut->expects($this->once())
+            ->method('clearCurrentShopGraphQLSchemaCache');
+        $sut->expects($this->once())
             ->method('clearCurrentShopContainerCache');
 
         $sut->clearAllCurrentShopCaches();
@@ -192,7 +240,8 @@ class ServiceTest extends TestCase
         ?ContainerCacheInterface $containerCache = null,
         ?ModuleCacheServiceInterface $moduleCacheService = null,
         ?ModulesDataProviderInterface $modulesDataProvider = null,
-        ?TemplateChainCacheInterface $templateChainCache = null
+        ?TemplateChainCacheInterface $templateChainCache = null,
+        ?CacheInterface $graphqlCache = null
     ): Service {
         return new Service(
             context: $context ?? $this->createStub(ContextInterface::class),
@@ -202,7 +251,8 @@ class ServiceTest extends TestCase
             containerCache: $containerCache ?? $this->createStub(ContainerCacheInterface::class),
             moduleCacheService: $moduleCacheService ?? $this->createStub(ModuleCacheServiceInterface::class),
             modulesDataProvider: $modulesDataProvider ?? $this->createStub(ModulesDataProviderInterface::class),
-            templateChainCache: $templateChainCache ?? $this->createStub(TemplateChainCacheInterface::class)
+            templateChainCache: $templateChainCache ?? $this->createStub(TemplateChainCacheInterface::class),
+            graphqlCache: $graphqlCache ?? $this->createStub(CacheInterface::class)
         );
     }
 }
