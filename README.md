@@ -27,19 +27,19 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 ```bash
 # Install desired version of oxid-esales/admin-tools for OXID 7.5.
-$ composer require oxid-esales/admin-tools:dev-b-7.5.x
+composer require oxid-esales/admin-tools:dev-b-7.5.x
 ```
 
 You should run migrations both after installing the module and after each module update:
 
 ```bash
-$ ./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_admintools
+./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_admintools
 ```
 
 ```bash
 # Activate the module
 # 
-$ ./vendor/bin/oe-console oe:module:activate oe_admintools
+./vendor/bin/oe-console oe:module:activate oe_admintools
 ```
 
 ## Cache Clearing Options
@@ -75,9 +75,9 @@ The module extends **GraphQL API (OXAPI)**, allowing cache clearing via API.
 ```bash
 # Install and activate compatible version of oxid-esales/graphql-base for OXID 7.5.
 #
-$ composer require oxid-esales/graphql-base:dev-b-7.5.x
-$ ./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_graphql_base
-$ ./vendor/bin/oe-console oe:module:activate oe_graphql_base
+composer require oxid-esales/graphql-base:dev-b-7.5.x
+./vendor/bin/oe-eshop-doctrine_migration migrations:migrate oe_graphql_base
+./vendor/bin/oe-console oe:module:activate oe_graphql_base
 ```
 
 ### Available GraphQL Mutations
@@ -111,7 +111,7 @@ mutation {
 }
 ```
 
-Only a logged in user with sufficient OXAPI permission will be permitted to call these queries.
+Only a logged in user with sufficient OXAPI permission will be permitted to call these mutations.
 'Logged in' means valid OXAPI JWT with sufficient permissions is sent in Authorization Bearer Header.
 User in question must be a member of 'gqladmintoolscache' usergroup.
 
