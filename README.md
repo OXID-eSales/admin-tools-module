@@ -1,6 +1,6 @@
 # OXID eShop Admin-Tools Module
 
-[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.5.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
+[![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.6.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
 [![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools-module?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools-module)
 [![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools-module)](https://github.com/oxid-esales/admin-tools-module)
 
@@ -19,6 +19,7 @@ This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins
 
 ## Branch Compatibility
 
+* b-7.6.x branch is compatible with latest shop compilation 7.6.x resp. b-7.6.x shop compilation branches
 * v2.0.0 (or b-7.5.x branch) is compatible with latest shop compilation 7.5.x resp. b-7.5.x shop compilation branches
 * v1.1.0 (or b-7.4.x branch) is compatible with latest shop compilation 7.4.x resp. b-7.4.x shop compilation branches
 * v1.0.0 (or b-7.3.x branch) is compatible with latest shop compilation 7.3.x resp. b-7.3.x shop compilation branches

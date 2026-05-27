@@ -36,15 +36,15 @@
         "codeception/module-webdriver": "^4.0",
         "codeception/module-phpbrowser": "*",
         "codeception/module-rest": "*",
-        "oxid-esales/codeception-modules": "dev-b-7.5.x",
-        "oxid-esales/codeception-page-objects": "dev-b-7.5.x",
+        "oxid-esales/codeception-modules": "dev-b-7.6.x",
+        "oxid-esales/codeception-page-objects": "dev-b-7.6.x",
         "thecodingmachine/graphqlite": "^7.0",
-        "oxid-esales/apex-theme": "dev-b-7.5.x",
-        "oxid-esales/graphql-base": "dev-b-7.5.x",
-        "oxid-esales/oxideshop-ce": "dev-b-7.5.x"
+        "oxid-esales/apex-theme": "dev-b-7.6.x",
+        "oxid-esales/graphql-base": "dev-b-7.6.x",
+        "oxid-esales/oxideshop-ce": "dev-b-7.6.x"
     },
     "conflict": {
-        "oxid-esales/oxideshop-ce": "<7.5"
+        "oxid-esales/oxideshop-ce": "<7.6"
     },
     "autoload": {
         "psr-4": {
