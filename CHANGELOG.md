@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update module to work with OXID eShop 7.6
 
+## [2.0.1] - 2026-10-08
+
+### Fixed
+- Add missing `thecodingmachine/graphqlite` dependency to the `require` section [#0008003](https://bugs.oxid-esales.com/view.php?id=8003)
+
 ## [2.0.0] - 2026-05-13
 
 ### Added
@@ -38,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First version of the module
 
+[2.0.1]: https://github.com/OXID-eSales/admin-tools-module/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/OXID-eSales/admin-tools-module/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/OXID-eSales/admin-tools-module/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/OXID-eSales/admin-tools-module/compare/v1.0.0-rc.1...v1.0.0
