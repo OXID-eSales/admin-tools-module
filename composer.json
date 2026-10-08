@@ -21,8 +21,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.3",
-        "thecodingmachine/graphqlite": "^7.0",
-        "oxid-esales/graphql-base": "dev-b-7.5.x"
+        "thecodingmachine/graphqlite": "^7.0"
     },
     "minimum-stability": "dev",
     "require-dev": {
@@ -41,6 +40,7 @@
         "oxid-esales/codeception-modules": "dev-b-7.5.x",
         "oxid-esales/codeception-page-objects": "dev-b-7.5.x",
         "oxid-esales/apex-theme": "dev-b-7.5.x",
+        "oxid-esales/graphql-base": "dev-b-7.5.x",
         "oxid-esales/oxideshop-ce": "dev-b-7.5.x"
     },
     "conflict": {
