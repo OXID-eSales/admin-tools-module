@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update module to work with OXID eShop 7.6
 
+## [2.0.2] - 2026-10-08
+
+### Fixed
+- Move `oxid-esales/graphql-base` back to `require-dev` (it was wrongly added to `require` in 2.0.1)
+
 ## [2.0.1] - 2026-10-08
 
 ### Fixed
@@ -43,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First version of the module
 
+[2.0.2]: https://github.com/OXID-eSales/admin-tools-module/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/OXID-eSales/admin-tools-module/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/OXID-eSales/admin-tools-module/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/OXID-eSales/admin-tools-module/compare/v1.0.0...v1.1.0
