@@ -1,8 +1,8 @@
 # OXID eShop Admin-Tools Module
 
 [![Development](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml/badge.svg?branch=b-7.6.x)](https://github.com/OXID-eSales/admin-tools-module/actions/workflows/trigger.yaml)
-[![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools-module?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools-module)
-[![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools-module)](https://github.com/oxid-esales/admin-tools-module)
+[![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools)
+[![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools)](https://github.com/oxid-esales/admin-tools-module)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=alert_status)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=coverage)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
@@ -61,7 +61,7 @@ The available options can be accessed via **Admin UI** or **OXAPI GraphQL**.
 
 ## Usage
 
-This assumes you have OXID eShop (at least `OXID-eSales/oxideshop_ce: v7.5.0` component, which is part of the `7.5.0` compilation) up and running.
+This assumes you have OXID eShop (at least `OXID-eSales/oxideshop_ce: v7.6.0` component, which is part of the `7.6.0` compilation) up and running.
 
 Admin Panel Usage
 - Go to the Admin Backoffice. 
