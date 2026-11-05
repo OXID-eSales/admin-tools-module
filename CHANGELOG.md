@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Update module to work with OXID eShop 7.6
+- Update `thecodingmachine/graphqlite` requirement from `^7.0` to `^8.3`
 
 ## [2.0.2] - 2026-10-08
 
