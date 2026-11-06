@@ -4,9 +4,9 @@
 [![Latest Version](https://img.shields.io/packagist/v/OXID-eSales/admin-tools?logo=composer&label=latest&include_prereleases&color=orange)](https://packagist.org/packages/oxid-esales/admin-tools)
 [![PHP Version](https://img.shields.io/packagist/php-v/oxid-esales/admin-tools)](https://github.com/oxid-esales/admin-tools-module)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=alert_status)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=coverage)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=sqale_index)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=alert_status&token=10765d9102070c733f81fcffdb66894088808357)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=coverage&token=10765d9102070c733f81fcffdb66894088808357)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=OXID-eSales_admin-tools-module&metric=sqale_index&token=10765d9102070c733f81fcffdb66894088808357)](https://sonarcloud.io/dashboard?id=OXID-eSales_admin-tools-module)
 
 This module adds admin tools to the OXID eShop Admin Backoffice, allowing admins to select and clear specific or all subshop caches via a dropdown in the header.
 
